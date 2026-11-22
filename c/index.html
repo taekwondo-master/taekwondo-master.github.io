@@ -4,88 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Taekwondo Challenge</title>
-<meta property="og:title" content="Taekwondo Master: Friend Challenge">
-<meta property="og:description" content="How many boards can you break in 30 seconds?">
-<style>
-  @font-face{font-family:"BHS";src:url(fonts/bhs_ko.woff2) format("woff2");font-display:swap}
-  @font-face{font-family:"Bebas";src:url(fonts/bebas.woff2) format("woff2");font-display:swap}
-  @font-face{font-family:"Barlow";font-weight:700;src:url(fonts/barlow700.woff2) format("woff2");font-display:swap}
-  :root{--sub:#9fb0cc;--gold:#ffd23f}
-  *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% 0%,#1c2b4a 0%,#060a14 70%);color:#fff;
-    font-family:"Barlow","BHS","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:700;display:flex;justify-content:center;padding:44px 20px}
-  html[lang=ko] body{font-family:"BHS","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:400}
-  main{width:100%;max-width:340px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
-  .tag{display:flex;align-items:center;gap:9px;font-family:"Bebas","BHS",sans-serif;font-size:17px;letter-spacing:.24em;color:var(--sub)}
-  html[lang=ko] .tag{font-size:15px;letter-spacing:.12em}
-  .tag:before,.tag:after{content:"";width:9px;height:9px;border-radius:50%;background:#2f7bff}.tag:after{background:#ff3b43}
-  h1{font-family:"Bebas","BHS",sans-serif;font-weight:400;font-size:50px;line-height:1;margin:0;letter-spacing:.02em;text-shadow:0 4px 0 #0008}
-  html[lang=ko] h1{font-family:"BHS",sans-serif;font-size:40px;letter-spacing:0}
-  .card{width:200px;border-radius:18px;padding:18px 12px 8px;background:linear-gradient(160deg,#3d86ff,#1646a8);box-shadow:0 6px 0 #0006;display:flex;flex-direction:column;align-items:center}
-  .card i{font-style:normal;font-size:20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;opacity:.95}
-  .card b{font-family:"Bebas",sans-serif;font-weight:400;font-size:112px;line-height:1;letter-spacing:.02em;text-shadow:0 5px 0 #0004;margin-top:2px}
-  .sub{font-size:17px;color:var(--sub)}
-  .code{display:flex;align-items:center;gap:10px;font-size:15px;color:#7f8fab}
-  .code b{color:#e8eef8;letter-spacing:.16em;font-family:"Bebas",sans-serif;font-weight:400;font-size:24px}
-  .code button{border:1px solid #2a3550;background:transparent;color:var(--sub);border-radius:8px;padding:5px 11px;font:inherit;font-size:14px;cursor:pointer}
-  .btn{display:block;width:100%;border-radius:14px;padding:15px;font-size:20px;text-decoration:none}
-  html:not([lang=ko]) .btn{font-family:"Bebas",sans-serif;font-size:26px;letter-spacing:.08em;padding:13px}
-  .main{background:var(--gold);color:#10151f;box-shadow:0 4px 0 #b88d00}
-  .sec{background:#ffffff1c;color:#fff}
-  .hint{font-size:14px;color:#6f7c95;line-height:1.6}
-  .err{color:#ff6b6b}
-  html[lang=ko] .sub,html[lang=ko] .hint,html[lang=ko] .code span,html[lang=ko] .code button{font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-weight:700}
-</style>
+<meta name="description" content="Kick, break and find your belt level. Taekwondo Master: Kick &amp; Break">
+<!-- 메신저 미리보기. og:url 은 일부러 안 넣음: 넣으면 도전장 코드(?k=)가 빠진 주소로 열릴 수 있음 -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="30-second board break challenge · How many can you break?">
+<meta property="og:description" content="Kick, break and find your belt level. Taekwondo Master: Kick &amp; Break">
+<meta property="og:image" content="https://taekwondo-master.github.io/c/img/og_en.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://taekwondo-master.github.io/c/img/og_en.jpg">
+<link rel="stylesheet" href="/c/page.css">
 </head>
 <body>
 <main>
-  <div class="tag" id="tag">FRIEND CHALLENGE</div>
-  <h1 id="head">Challenge!</h1>
-  <div class="card" id="card"><i id="who"></i><b id="num"></b></div>
-  <div class="sub" id="sub">30 seconds · can you beat it?</div>
-  <div class="code" id="codeRow"><span id="codeLabel">CODE</span><b id="code"></b><button id="copy">Copy</button></div>
-  <a class="btn main" id="open" href="#">Play in the app</a>
-  <a class="btn sec" id="ios" href="https://apps.apple.com/app/id6821990357?pt=challenge&amp;ct=friend-challenge">Get the app</a>
-  <div class="hint" id="hint">New? Install, then Friend Challenge → Enter code</div>
+  <div class="hero">
+    <div class="scene"><img src="/c/img/cue_ap.webp" alt=""><img class="hit" src="/c/img/hit_ap.webp" alt="30-second board break challenge · How many can you break?"></div>
+    <div class="flash"></div><img class="logo" src="/c/img/logo.webp" alt="Taekwondo Master">
+  </div>
+  <div class="body">
+    <div class="game" id="game"></div>
+    <h1 id="head"></h1>
+    <div class="card" id="card"><div class="score"><b id="num"></b><span id="unit"></span></div><div class="tier"><img id="tierImg" alt=""><div class="big" id="tierName"></div></div></div>
+    <div class="ask" id="ask"></div>
+    <a class="btn main" id="open" href="#"></a>
+    <a class="btn sec" id="ios" href="https://apps.apple.com/app/id6821990357?pt=challenge&amp;ct=friend-challenge"></a>
+    <div class="code" id="codeRow"><span id="codeLabel"></span><b id="code"></b><button id="copy"></button></div>
+    <div class="belts" id="belts"></div>
+    <div class="hint" id="hint"></div>
+  </div>
 </main>
-<script>
-(function () {
-  var q = new URLSearchParams(location.search);
-  var K = q.get('l') === 'ko' || (!q.get('l') && /^ko/i.test(navigator.language || ''));
-  var AB = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-  function dec(code) {   // 앱(chDec)과 같은 방식
-    var s = String(code || '').toUpperCase().replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/I/g, '1');
-    if (s.length !== 7) return null;
-    var c = 0, v = 0, i;
-    for (i = 0; i < 6; i++) { if (AB.indexOf(s[i]) < 0) return null; c = (c * 7 + AB.indexOf(s[i]) + i) % 32; }
-    if (AB[c] !== s[6]) return null;
-    for (i = 0; i < 6; i++) v = v * 32 + AB.indexOf(s[i]);
-    return { n: v % 1024, code: s.slice(0, 3) + '-' + s.slice(3) };
-  }
-  var $ = function (id) { return document.getElementById(id); };
-  var name = (q.get('n') || '').slice(0, 12), d = dec(q.get('k'));
-  document.documentElement.lang = K ? 'ko' : 'en';
-  if (K) {
-    document.title = '태권도 격파 도전장';
-    $('tag').textContent = '친구 도전장'; $('head').textContent = '도전장 도착!';
-    $('sub').textContent = '30초 격파 · 넘어 볼래?'; $('codeLabel').textContent = '코드'; $('copy').textContent = '복사';
-    $('open').textContent = '앱에서 도전하기'; $('ios').textContent = '앱 받기';
-    $('hint').textContent = '처음이면 설치 후 친구 도전장 → 받은 코드 입력';
-  }
-  if (!d) {
-    $('head').innerHTML = '<span class="err">' + (K ? '도전장이 올바르지 않아요' : 'Invalid challenge') + '</span>';
-    ['card', 'sub', 'codeRow', 'open'].forEach(function (id) { $(id).style.display = 'none'; });
-    return;
-  }
-  $('who').textContent = name || (K ? '친구' : 'Friend');
-  $('num').textContent = d.n;
-  $('code').textContent = d.code;
-  $('open').href = 'taekwondomaster://c?k=' + encodeURIComponent(d.code) + (name ? '&n=' + encodeURIComponent(name) : '');
-  $('copy').onclick = function () {
-    var b = this;
-    (navigator.clipboard ? navigator.clipboard.writeText(d.code) : Promise.reject()).then(function () { b.textContent = K ? '복사됨 ✓' : 'Copied ✓'; }).catch(function () {});
-  };
-})();
-</script>
+<script src="/c/page.js"></script>
 </body>
 </html>

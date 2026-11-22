@@ -1,0 +1,52 @@
+@font-face{font-family:"BHS";src:url(fonts/bhs_ko.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Bebas";src:url(fonts/bebas.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Barlow";font-weight:700;src:url(fonts/barlow700.woff2) format("woff2");font-display:swap}
+:root{--sub:#9fb0cc;--gold:#ffd23f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#060a14;color:#fff;font-family:"Barlow",sans-serif;font-weight:700;display:flex;justify-content:center}
+main{width:100%;max-width:430px;text-align:center;padding-bottom:28px}
+h1,.big,.btn{font-family:"Bebas","BHS",sans-serif;font-weight:400}
+html[lang=ko] body{font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+html[lang=ko] h1,html[lang=ko] .big,html[lang=ko] .btn{font-family:"BHS",sans-serif}
+
+/* 움직이는 장면: 준비 → 발차기 격파(2.4초 반복). 태극기 자리는 두 장면이 같음 */
+/* 그림 비율 그대로: 위쪽 태극기가 잘리지 않게 높이를 따로 줄이지 말 것 */
+.hero{position:relative;width:100%;max-width:400px;margin:0 auto;aspect-ratio:640/590;overflow:hidden;background:#12205e}
+.scene{position:absolute;inset:0;animation:shake 2.4s infinite}
+.scene img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.scene .hit{animation:hit 2.4s infinite}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 2.4s infinite}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(#060a1400,#060a14)}
+.logo{position:absolute;left:8px;bottom:0;width:104px;z-index:2}
+@keyframes hit{0%,32%{opacity:0}33%,92%{opacity:1}100%{opacity:0}}
+@keyframes flash{0%,32%{opacity:0}33%{opacity:.55}40%,100%{opacity:0}}
+@keyframes shake{0%,32%,44%,100%{transform:none}34%{transform:translate(-6px,4px) scale(1.04)}37%{transform:translate(5px,-3px) scale(1.03)}40%{transform:translate(-2px,1px) scale(1.01)}}
+@media (prefers-reduced-motion:reduce){.scene,.scene .hit,.flash{animation:none}}
+
+.body{padding:0 20px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.game{font-size:15px;color:#9fc4ff;letter-spacing:.05em;margin-top:2px}
+h1{font-size:36px;line-height:1.1;margin:0;max-width:100%;overflow-wrap:anywhere}
+html[lang=ko] h1{font-size:30px}
+.card{width:100%;border-radius:18px;padding:8px 14px;background:linear-gradient(160deg,#3d86ff,#1646a8);display:flex;align-items:center;justify-content:space-around}
+.score{display:flex;align-items:baseline;gap:5px}
+.score b{font-family:"Bebas",sans-serif;font-weight:400;font-size:88px;line-height:1}
+.score span{font-size:19px;white-space:nowrap}
+.tier{background:#eef3fb;border-radius:12px;padding:4px 8px 6px;display:flex;flex-direction:column;align-items:center}
+.tier img{width:92px}
+.tier .big{font-size:20px;line-height:1.1;color:#10151f}
+.ask{font-size:17px;color:#dce5f3}
+html[lang=ko] .ask{font-size:16px;word-break:keep-all}
+.btn{display:block;width:100%;border-radius:14px;padding:12px;font-size:24px;line-height:1.2;letter-spacing:.05em;text-decoration:none}
+html[lang=ko] .btn{font-size:20px;letter-spacing:0}
+.main{background:var(--gold);color:#10151f;box-shadow:0 4px 0 #b88d00}
+.sec{background:#ffffff1c;color:#fff}
+.code{display:flex;align-items:center;gap:10px;font-size:14px;color:#7f8fab}
+.code b{color:#e8eef8;letter-spacing:.16em;font-family:"Bebas",sans-serif;font-weight:400;font-size:24px}
+.code button{border:1px solid #2a3550;background:transparent;color:var(--sub);border-radius:8px;padding:5px 11px;font:inherit;cursor:pointer}
+.belts{width:100%;display:flex;gap:3px;margin-top:4px}
+.belts div{flex:1;min-width:0;border-radius:8px;padding:5px 0 3px;font-size:12px;color:#dce5f3;background:#5b6b8a55}
+.belts div.on{background:#ffd23f30;outline:2px solid var(--gold);color:var(--gold)}
+.belts img{display:block;width:100%}
+.hint{font-size:13px;color:#6f7c95;line-height:1.5}
+.err{color:#ff6b6b}
+[hidden]{display:none!important}
