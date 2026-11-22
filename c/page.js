@@ -34,7 +34,13 @@
     var el = document.createElement('div'), im = document.createElement('img');
     im.src = '/c/img/belt_' + x[0] + '.webp';
     im.alt = t(x[3], x[2]);
-    el.appendChild(im);
+    if (x[0] === 'black') {   // 검은띠만 금빛 + 별 4개
+      var gold = document.createElement('span');
+      gold.className = 'gold';
+      gold.appendChild(im);
+      for (var j = 0; j < 4; j++) gold.appendChild(document.createElement('i'));
+      el.appendChild(gold);
+    } else el.appendChild(im);
     el.appendChild(document.createTextNode(x[1] + '+'));
     if (i === at) el.className = 'on';
     $('belts').appendChild(el);
