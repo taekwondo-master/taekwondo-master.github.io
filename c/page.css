@@ -27,7 +27,7 @@ html[lang=ko] h1,html[lang=ko] .big,html[lang=ko] .btn{font-family:"BHS",sans-se
 .game{font-size:15px;color:#9fc4ff;letter-spacing:.05em;margin-top:2px}
 h1{font-size:36px;line-height:1.1;margin:0;max-width:100%;overflow-wrap:anywhere}
 html[lang=ko] h1{font-size:30px}
-.card{width:100%;border-radius:18px;padding:8px 14px;background:linear-gradient(160deg,#3d86ff,#1646a8);display:flex;align-items:center;justify-content:space-around}
+.card{width:100%;gap:8px;border-radius:18px;padding:8px 14px;background:linear-gradient(160deg,#3d86ff,#1646a8);display:flex;align-items:center;justify-content:space-around}
 .score{display:flex;align-items:baseline;gap:5px}
 .score b{font-family:"Bebas",sans-serif;font-weight:400;font-size:88px;line-height:1}
 .score span{font-size:19px;white-space:nowrap}
@@ -58,6 +58,8 @@ html[lang=ko] .btn{font-size:20px;letter-spacing:0}
 @keyframes glow{0%,100%{filter:brightness(1.15) sepia(.35) var(--edge) drop-shadow(0 0 2px #ffd23f) drop-shadow(0 0 5px #ffb300aa)}50%{filter:brightness(1.45) sepia(.6) var(--edge) drop-shadow(0 0 3px #ffd23f) drop-shadow(0 0 9px #ffb300)}}
 @keyframes twinkle{0%,100%{transform:scale(.2) rotate(0);opacity:0}45%{transform:scale(1.15) rotate(45deg);opacity:1}70%{transform:scale(.8) rotate(70deg);opacity:.8}}
 @media (prefers-reduced-motion:reduce){.belts .gold img,.belts .gold i{animation:none}}
-.hint{font-size:13px;color:#6f7c95;line-height:1.5}
+.hint{font-size:13px;color:#6f7c95;line-height:1.5;word-break:keep-all;text-wrap:balance}
+/* 작은 폰: 점수 글자와 띠 칸 사이를 띄움 */
+@media (max-width:374px){.card{padding:8px;gap:8px}.score{gap:4px}.score b{font-size:72px}.score span{font-size:16px}.tier{padding:4px 6px 6px}.tier img{width:78px}.tier .big{font-size:18px;margin-top:4px}}
 .err{color:#ff6b6b}
 [hidden]{display:none!important}
